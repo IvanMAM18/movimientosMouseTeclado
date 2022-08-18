@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style type="text/css">
+        canvas{
+            background-color: rgb(138,138,209); 
+            border-radius: 10px;
+            border-color: rgb(1, 1, 12);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500">
+        Hola en navegador
+    <canvas>
+        <img src="goku.jpg" id="imagen" style="display:none">
+</body>
+</html>
+<script type="text/javascript">
+    var canvas = document.getElementById('myCanvas');
+    var contexto = canvas.getContext('2d');
+    var color = "red";
+    var colorDos = "blue";
+    var figura = 'arc';
+    var press = false;
+    var superX=0;
+    var superY=0;
+
+    //contexto.fillStyle = "rgb(500,0,0)";
+    //contexto.fillRect(10,10,55,50);
+
+    //contexto.fillStyle = "rgb(0,0,500)";
+    //contexto.fillRect(50,50,55,50);
+
+   //contexto.fillStyle = "rgb(258,0,128,0.5)";
+   //contexto.fillRect(90,90,55,50);
+
+    //lineas
+   //contexto.moveTo(350,380);//Colocar un punto inicial
+   //contexto.lineTo(200,200);//Mover el lapiz al punto
+   //contexto.stroke();//Dibujar el contorno
+
+   //Figura
+   //contexto.moveTo(260,300);
+   //contexto.lineTo(320,460);
+   //contexto.lineTo(400,470);
+   //contexto.fillStyle = "red";
+   //contexto.stroke();
+   //contexto.fill();
+
+    //var c = document.getElementById("myCanvas");
+    //var ctx = c.getContext("2d");
+    //ctx.beginPath();
+    //ctx.arc(300,60, 40, 0, 2 * Math.PI);
+    //ctx.strokeStyle= "rgb(500,0,0)";
+    //ctx.stroke();
+
+    //contexto.beginPath();
+    //contexto.arc(400,60, 40, 0, 2 * Math.PI);
+    //contexto.fillStyle = "rgb(500,0,0)";
+    //contexto.stroke();
+    //contexto.fill();
+
+    //texto
+    
+    //contexto.font = "30px Arial";
+    //contexto.fillText("Ivan Martin", 110, 50);
+    //contexto.strokeText("Ivan Martin",110,80);
+
+    //gradiales lineas
+    //var grd = contexto.createLinearGradient(0, 0, 400, 0);
+    //grd.addColorStop(0, "red");
+    //grd.addColorStop(0.7, "black");
+    //grd.addColorStop(1, "white");
+
+    //contexto.fillStyle = grd;
+    //contexto.fillRect(100, 0, 150, 80);
+    // gradiales radio
+
+    //var grd = contexto.createRadialGradient(75,50, 5, 90, 60, 100);
+    //grd.addColorStop(0, "red");
+    //grd.addColorStop(1, "white");
+
+    //contexto.fillStyle = grd;
+    //contexto.fillRect(10, 10, 150, 100);
+
+    //imagen
+    //var img = document.getElementById("imagen");
+    //contexto.drawImage(img, 10, 10);
+
+    //canvas.addEventListener("click",doClick);
+    //function doClick(){
+        //console.log("Hola");
+        //alert("Hola");
+    //};
+
+    //Funcion anonima
+    /*canvas.addEventListener("click",function(e){
+        console.log(figura);
+        contexto.beginPath();
+        if(figura=='arc'){
+            
+            contexto.strokeStyle= "rgb("+color+",0,128,0.5)";
+            contexto.fillStyle= "rgb("+color+","+colorDos+",128,0.5)";
+            contexto.arc(e.offsetX-25,e.offsetY-25,40,0,2*Math.PI);
+            contexto.stroke();
+            contexto.fill();
+        }else{
+            
+            contexto.fillStyle= "rgb("+color+","+colorDos+",128,0.5)";
+            contexto.strokeStyle= "rgb("+color+",0,128,0.5)";
+            contexto.fillRect(e.offsetX-25,e.offsetY-25,55,50);
+            contexto.stroke();
+            contexto.fill();
+        }
+        })
+    
+    canvas.addEventListener("mouseover",function(e){
+        console.log(Math.floor(Math.random() * (500-100+1)));
+        color=Math.floor(Math.random() * (500-0+1));
+        colorDos=Math.floor(Math.random() * (500-0+1));
+    });
+
+    canvas.addEventListener('mouseout',function(e){
+        //if ternario
+        figura=(figura=='arc')?'rec':'arc';
+        console.log(figura);
+    })
+
+    canvas.addEventListener('mouseup',function(e){
+        press=false;
+    })
+
+    canvas.addEventListener('mousedown',function(e){
+        press=true;
+    })
+
+    canvas.addEventListener('mousemove',function(e){
+        if(press){
+
+            contexto.beginPath();
+            contexto.fillStyle= "black";
+            contexto.fillRect(e.offsetX-2.5,e.offsetY-2.5,5,5);
+            contexto.fill;
+        }
+        
+    })
+
+    function generateRandomColor() {
+     var letters = '0123456789ABCDEF';
+     var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+    }*/
+
+    //movimientos de teclado
+    document.addEventListener('keydown',function(e){
+        console.log(e);
+        if(e.keyCode == 87 || e.keyCode ==38){
+            superY-=10;
+        }
+        if(e.keyCode == 83 || e.keyCode ==40){
+            superY+=10;
+        }
+        if(e.keyCode == 65 || e.keyCode ==37){
+            superX-=10;
+        }
+        if(e.keyCode == 68 || e.keyCode ==39){
+            superX+=10;
+        }
+         paint();
+
+    })
+    function paint(){
+            contexto.fillStyle = "rgb("+Math.floor(Math.random() * (500-0+1))+",0,128,0.5)";
+            contexto.fillRect(0,0,500,500);
+            contexto.fillStyle = "red";
+            contexto.fillRect(superX,superY,40,40);
+            contexto.strokRect(superX,superY,40,40);
+    }
+</script>
